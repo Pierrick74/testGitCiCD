@@ -16,7 +16,7 @@ jobs:
         run: xcodebuild -version
       
       - name: Show build settings
-        run: xcodebuild -scheme testGitCiCd -showBuildSettings
+        run: xcodebuild -scheme testGitCiCD -showBuildSettings
         
       - name: Show available schemes
         run: xcodebuild -list
