@@ -15,5 +15,5 @@ jobs:
       - name: Build
         run: |
           project_path=$(find . -name "*.xcodeproj" -type d)
-          xcodebuild build -project "$project_path" -scheme testGitCiCd -sdk iphonesimulator -configuration Debug
+          xcodebuild build -project "$project_path" -scheme testGitCiCD -sdk iphonesimulator -configuration Debug
         
