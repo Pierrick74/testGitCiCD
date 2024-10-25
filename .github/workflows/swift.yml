@@ -2,15 +2,13 @@ name: "Swift Build & Test"
 
 on:
   push:
-    branches: 
-      - 'release/**'  # Uniquement sur les branches de release
+    branches: "main"
   pull_request:
-    branches: 
-      - 'release/**'
+    branches: ["main", "develop"]
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
       
