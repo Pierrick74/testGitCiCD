@@ -8,10 +8,11 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest    # Utilisation de macOS au lieu d'Ubuntu
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build
-        run: xcodebuild build
-      - name: Run tests
-        run: xcodebuild test
+      
+      - name: Build and Test
+        run: |
+          xcodebuild build -scheme testGitCiCd -sdk iphonesimulator
+          xcodebuild test -scheme testGitCiCd -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
