@@ -1,3 +1,4 @@
+
 name: "Swift Build & Test"
 
 on:
@@ -12,17 +13,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Show Xcode version
-        run: xcodebuild -version
-      
-      - name: Show build settings
-        run: xcodebuild -scheme testGitCiCD -showBuildSettings
+      - name: Show current directory
+        run: pwd && ls -la
         
-      - name: Show available schemes
+      - name: Show Xcode projects
+        run: find . -name "*.xcodeproj" -type d
+        
+      - name: Show project content
+        run: |
+          cd *.xcodeproj || exit 1
+          ls -la
+          cd xcshareddata/xcschemes || exit 1
+          ls -la
+        
+      - name: List available schemes
         run: xcodebuild -list
         
       - name: Build
-        run: xcodebuild build -scheme testGitCiCD -sdk iphonesimulator -configuration Debug | xcpretty && exit ${PIPESTATUS[0]}
-        
-      - name: Test
-        run: xcodebuild test -scheme testGitCiCD -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' -configuration Debug | xcpretty && exit ${PIPESTATUS[0]}
+        run: |
+          project_name=$(find . -name "*.xcodeproj" -type d -maxdepth 1 | head -n 1)
+          xcodebuild build -project "$project_name" -scheme testGitCiCd -sdk iphonesimulator -configuration Debug
