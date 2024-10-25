@@ -9,10 +9,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Install Swift
+        uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: "5.9"  # Vous pouvez ajuster la version selon vos besoins
+      
       - name: Build
         run: swift build
+        
       - name: Run tests
         run: swift test
