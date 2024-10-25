@@ -11,10 +11,5 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Build
-        run: |
-          project_path=$(find . -name "*.xcodeproj" -type d)
-          xcodebuild build -project "$project_path" -scheme testGitCiCD -sdk iphonesimulator -configuration Debug
-        
-    
+ - name: Build
+    run: swift build
