@@ -1,19 +1,6 @@
 name: "Swift Build & Test"
 
-on:
-  push:
-   branches:
-     - main
-     - 'testBranche'
-     - 'origin/**'
-     - 'origin/*'
-     - 'hotfix/**'
-     - '**'
-  
-  pull_request:
-    branches: 
-      - main
-      - '**'
+on: [push, pull_request]
 
 jobs:
   build:
