@@ -1,15 +1,36 @@
 name: "Swift Build & Test"
-
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/*
+      - hotfix/*
+      - release/*
+      - '*'
+      - '**'
+      - '**/*'
+  pull_request:
+    branches:
+      - main
+      - develop
+      - feature/*
+      - hotfix/*
+      - release/*
+      - '*'
+      - '**'
+      - '**/*'
 
 jobs:
   build:
-    runs-on: macos-15
+    name: Build and Test
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
       
       - name: Build
         run: |
+          echo "Current branch: ${{ github.ref }}"
           project_path=$(find . -name "*.xcodeproj" -type d)
           xcodebuild build -project "$project_path" -scheme testGitCiCD -sdk iphonesimulator -configuration Debug
-        
