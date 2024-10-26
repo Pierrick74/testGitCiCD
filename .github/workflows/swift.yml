@@ -3,7 +3,8 @@ name: "Swift Build & Test"
 on:
   push:
     branches:
-      - '**'
+      - main
+      - testBranche
   pull_request:
     branches: 
       - main
