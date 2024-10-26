@@ -2,11 +2,7 @@ name: "Swift Build & Test"
 
 on:
   push:
-    branches:
-      - main
-       - '*'
-      - '*/*'
-      - '**'
+ branches: [ main, develop, 'feature/**', 'release/**', 'hotfix/**', '**' ]
   
   pull_request:
     branches: 
