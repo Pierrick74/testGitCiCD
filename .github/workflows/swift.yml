@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - 'main'
-      - 'origin/**'
+      - 'testBranches'
   pull_request:
     branches: 
       - main
