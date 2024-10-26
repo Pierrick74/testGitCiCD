@@ -5,6 +5,7 @@ on:
     branches:
       - 'main'
       - 'testBranches'
+      - 'origin/**'
   pull_request:
     branches: 
       - main
