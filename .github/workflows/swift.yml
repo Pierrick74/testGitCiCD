@@ -1,15 +1,9 @@
 name: "Swift Build & Test"
 
 on:
-  push:
-    branches: 
-      - main
-      - 'feature-1'
-  pull_request:
-    branches: 
-      - main
-      - '**'
-
+ push:
+    branches: [ main, '**']
+  
 jobs:
   build:
     runs-on: macos-15
